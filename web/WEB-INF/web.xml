@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+    <welcome-file-list>
+        <welcome-file>welcome</welcome-file>
+    </welcome-file-list>
+    <!--首页-->
+    <servlet>
+        <servlet-name>WelcomeController</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.WelcomeController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WelcomeController</servlet-name>
+        <url-pattern>/welcome</url-pattern>
+    </servlet-mapping>
+
+    <!--登录-->
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.LoginController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <!--注册-->
+    <servlet>
+        <servlet-name>RegisterController</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.RegisterController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterController</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <!--商品详情-->
+    <servlet>
+        <servlet-name>ProductViewController</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.ProductViewController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductViewController</servlet-name>
+        <url-pattern>/product_view</url-pattern>
+    </servlet-mapping>
+
+    <!--新闻详情-->
+    <servlet>
+        <servlet-name>NewsViewController</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.NewsViewController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewsViewController</servlet-name>
+        <url-pattern>/news_view</url-pattern>
+    </servlet-mapping>
+
+    <!--公告详情-->
+    <servlet>
+        <servlet-name>NoteViewController</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.NoteViewController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NoteViewController</servlet-name>
+        <url-pattern>/note_view</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowShoppingCarController</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.ShowShoppingCarController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowShoppingCarController</servlet-name>
+        <url-pattern>/show_shoppingcar</url-pattern>
+    </servlet-mapping>
+    <!--将商品添加进购物车-->
+    <servlet>
+        <servlet-name>AddShoppingCarController</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.AddShoppingCarController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddShoppingCarController</servlet-name>
+        <url-pattern>/add_shoppingcar</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>
