@@ -1,7 +1,7 @@
 package sdkd.com.ec.controller.manage;
 
-import sdkd.com.ec.dao.impl.EbUserDao;
-import sdkd.com.ec.model.EbUser;
+import sdkd.com.ec.dao.impl.EbOrderDao;
+import sdkd.com.ec.model.EbOrder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,19 +12,19 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Flower on 2016/7/9.
+ * Created by Flower on 2016/7/10.
  */
-
-public class ManageUserController extends HttpServlet {
+@WebServlet(name = "ManageOrderController")
+public class ManageOrderController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf8");
-        EbUserDao ebUserDao = new EbUserDao();
-        List<EbUser> generalUsersList = ebUserDao.getGeneralUsersList();
-        String pageNumberStr = request.getParameter("pageNumber");
+        EbOrderDao ebOrderDao = new EbOrderDao();
+        List<EbOrder> ordersList = ebOrderDao.getOrdersList();
+        /*String pageNumberStr = request.getParameter("pageNumber");
         int pageNumber = 1;     //当前页
         if(pageNumberStr != null && !"".equals(pageNumberStr)) {
             pageNumber = Integer.parseInt(pageNumberStr);
@@ -37,10 +37,10 @@ public class ManageUserController extends HttpServlet {
         request.setAttribute("pageNumber",pageNumber);
         request.setAttribute("pageSize",pageSize);
         request.setAttribute("totalUsers",totalUsers);
-        request.setAttribute("totalPages",totalPages);
+        request.setAttribute("totalPages",totalPages);*/
 
         //List<EbUser> generalUsersList = ebUserDao.getGeneralUsersList();
-        request.setAttribute("general_users_list",generalUsersList);
-        request.getRequestDispatcher("./manage/user.jsp").forward(request,response);
+        request.setAttribute("orders_list", ordersList);
+        request.getRequestDispatcher("./manage/order.jsp").forward(request,response);
     }
 }

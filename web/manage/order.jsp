@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 	<%@ include file="top.jsp" %>
 </head>
@@ -10,7 +11,9 @@
 		<div class="manage">
 			<div class="search">
 				<form method="get">
-					订单号：<input type="text" class="text" name="orderId" /> 订货人：<input type="text" class="text" name="userName" /> <label class="ui-blue"><input type="submit" name="submit" value="查询" /></label>
+					订单号：<input type="text" class="text" name="orderId" />
+					订货人：<input type="text" class="text" name="userName" />
+					<label class="ui-blue"><input type="submit" name="submit" value="查询" /></label>
 				</form>
 			</div>
 			<div class="spacer"></div>
@@ -22,20 +25,24 @@
 					<th>状态</th>
 					<th>操作</th>
 				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="w1 c">张三丰</td>
-					<td>高老庄</td>
-					<td class="w1 c">发货</td>
-					<td class="w1 c"><a href="order-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="w1 c">张三丰</td>
-					<td>花果山</td>
-					<td class="w1 c">审核通过</td>
-					<td class="w1 c"><a href="order-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
+				<%
+					int i = 0;
+				%>
+				<c:forEach items="${requestScope.orders_list}" var="order">
+					<tr>
+						<td class="first w4 c"><%=++i%></td>
+						<td class="w1 c">${order.eo_user_name}</td>
+						<td>${order.eo_user_address}</td>
+						<td class="w1 c">
+							<c:if test="${order.eo_status == 1}">订单</c:if>
+							<c:if test="${order.eo_status == 2}">审核通过</c:if>
+							<c:if test="${order.eo_status == 3}">配货</c:if>
+							<c:if test="${order.eo_status == 4}">送货中</c:if>
+							<c:if test="${order.eo_status == 5}">收货并确认</c:if>
+						</td>
+						<td class="w1 c"><a href="order-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+					</tr>
+				</c:forEach>
 			</table>
 			<div class="pager">
 				<ul class="clearfix">

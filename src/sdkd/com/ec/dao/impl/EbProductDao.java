@@ -36,7 +36,6 @@ public class EbProductDao extends BaseDao {
             e.printStackTrace();
         }
         return list;
-
     }
     public List<EbProduct> getPromotionProduct()
     {
@@ -106,6 +105,29 @@ public class EbProductDao extends BaseDao {
             e.printStackTrace();
         }
         return ep;
+    }
+    public List<EbProduct> getProductsList()
+    {
+        List<EbProduct> list = new ArrayList<EbProduct>();
+        String sql = "select * from easybuy_product";
+        ResultSet rs = this.executeSearch(sql,null);
+        try {
+            while (rs.next()){
+                EbProduct product = new EbProduct();
+                product.setEp_id(rs.getInt("ep_id"));
+                product.setEp_name(rs.getString("ep_name"));
+                product.setEp_description(rs.getString("ep_description"));
+                product.setEp_price(rs.getDouble("ep_price"));
+                product.setEp_stock(rs.getInt("ep_stock"));
+                product.setEpc_id(rs.getInt("epc_id"));
+                product.setEpc_child_id(rs.getInt("epc_child_id"));
+                product.setEp_file_name(rs.getString("ep_file_name"));
+                list.add(product);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     /**

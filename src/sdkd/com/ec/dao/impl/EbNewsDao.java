@@ -32,6 +32,26 @@ public class EbNewsDao extends BaseDao {
         }
         return newsList;
     }
+    public List<EbNews> getNewsList(){
+        List<EbNews> newsList = new ArrayList<EbNews>();
+        String sql = "select * from easybuy_news order by en_create_time desc";
+        try {
+            ResultSet rs = this.executeSearch(sql,null);
+            while (rs.next()){
+                EbNews news = new EbNews();
+                news.setEn_id(rs.getInt("en_id"));
+                news.setEn_title(rs.getString("en_title"));
+                news.setEn_create_time(rs.getTimestamp("en_create_time"));
+                news.setEn_content(rs.getString("en_content"));
+                news.setEn_title(rs.getString("en_title"));
+                //添加到集合中
+                newsList.add(news);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return newsList;
+    }
     public EbNews getNewsById(int id){
         EbNews news = new EbNews();
         String sql = "select * from easybuy_news where en_id = ?";

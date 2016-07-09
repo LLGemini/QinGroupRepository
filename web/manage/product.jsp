@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%@ include file="top.jsp" %>
@@ -14,16 +15,22 @@
 					<th>商品名称</th>
 					<th>操作</th>
 				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="thumb"><img src="../images/product/0_tiny.gif" /><a href="../product-view.jsp" target="_blank">铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机</a></td>
-					<td class="w1 c"><a href="product-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="thumb"><img src="../images/product/0_tiny.gif" /><a href="../product-view.jsp" target="_blank">铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机</a></td>
-					<td class="w1 c"><a href="product-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
+				<%
+					int i = 0;
+				%>
+				<c:forEach items="${requestScope.products_list}" var="product">
+					<tr>
+						<td class="first w4 c"><%=++i%></td>
+						<td class="thumb">
+							<img src="${product.ep_file_name}" />
+							<a href="../product-view.jsp" target="_blank">${product.ep_name}</a>
+						</td>
+						<td class="w1 c">
+							<a href="product-modify.jsp">修改</a>
+							<a href="javascript:Delete(1);">删除</a>
+						</td>
+					</tr>
+				</c:forEach>
 			</table>
 		</div>
 	</div>

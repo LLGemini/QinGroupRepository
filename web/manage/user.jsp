@@ -18,9 +18,12 @@
 					<th>手机</th>
 					<th>操作</th>
 				</tr>
+				<%
+					int i = 0;
+				%>
 				<c:forEach items="${requestScope.general_users_list}" var="general_user">
 				<tr>
-					<td class="first w4 c">${general_user.eu_user_id}</td>
+					<td class="first w4 c"><%=++i%></td>
 					<td class="w1 c">${general_user.eu_user_name}</td>
 					<td class="w2 c">${general_user.eu_sex}</td>
 					<td class="w2 c">
@@ -31,6 +34,13 @@
 					<td class="w1 c"><a href="user-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
 				</tr>
 			</c:forEach>
+				<tfoot>
+				<tr align="center">
+					<td colspan="5">
+						<jsp:include page="paging_footer.jsp"></jsp:include>
+					</td>
+				</tr>
+				</tfoot>
 			</table>
 		</div>
 	</div>
