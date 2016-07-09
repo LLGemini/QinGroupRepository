@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%@ include file="top.jsp" %>
@@ -17,22 +18,19 @@
 					<th>手机</th>
 					<th>操作</th>
 				</tr>
+				<c:forEach items="${requestScope.general_users_list}" var="general_user">
 				<tr>
-					<td class="first w4 c">1</td>
-					<td class="w1 c">张三丰</td>
-					<td class="w2 c">男</td>
-					<td>fengsan.zhang@prd.com</td>
-					<td class="w4 c">13888888888</td>
+					<td class="first w4 c">${general_user.eu_user_id}</td>
+					<td class="w1 c">${general_user.eu_user_name}</td>
+					<td class="w2 c">${general_user.eu_sex}</td>
+					<td class="w2 c">
+						<c:if test="${general_user.eu_sex == 1}">男</c:if>
+						<c:if test="${general_user.eu_sex == 2}">女</c:if>
+					</td>
+					<td class="w4 c">${general_user.eu_mobile}</td>
 					<td class="w1 c"><a href="user-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
 				</tr>
-				<tr>
-					<td class="first w4 c">2</td>
-					<td class="w1 c">杨二郎</td>
-					<td class="w2 c">男</td>
-					<td>fengsan.zhang@prd.com</td>
-					<td class="w4 c">13888888888</td>
-					<td class="w1 c"><a href="user-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
+			</c:forEach>
 			</table>
 		</div>
 	</div>

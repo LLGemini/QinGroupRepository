@@ -21,14 +21,22 @@ public class LoginController extends HttpServlet {
         request.setCharacterEncoding("utf8");
 
         String userName = request.getParameter("userName").trim();
-        String passWord = request.getParameter("passWord").trim();
-        EbUserDao ebuserdao= new EbUserDao();
-        EbUser user = ebuserdao.verify(userName,passWord);
-        if(user != null)
+        String password = request.getParameter("passWord").trim();
+        if(userName == null || password == null) {
+            response.sendRedirect("login.jsp");
+        }
+        EbUserDao ebUserDao= new EbUserDao();
+        EbUser user = ebUserDao.getUserByName(userName);
+        //EbUser user = ebuserdao.verify(userName,passWord);
+        if(user != null && user.getEu_password() != null && user.getEu_password().equals(password))
         {
             HttpSession session = request.getSession();
             session.setAttribute("user",user);
-            response.sendRedirect("welcome");
+            if(user.getEu_status() == 2) { // 管理员
+                response.sendRedirect("/manage/index.jsp");
+            } else if(user.getEu_status() == 1) {
+                response.sendRedirect("welcome");
+            }
         }
         else
         {

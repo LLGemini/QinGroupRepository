@@ -98,7 +98,7 @@ public class EbProductDao extends BaseDao {
             ep.setEp_price(Double.valueOf(rs.getString("ep_price").trim()));
             ep.setEp_file_name(rs.getString("ep_file_name"));
             ep.setEp_stock(rs.getInt("ep_stock"));
-            ep.setEpc_child_id(rs.getInt("ep_child_id"));
+            ep.setEpc_child_id(rs.getInt("epc_child_id"));
             ep.setEp_description(rs.getString("ep_description"));
             ep.setEp_price(rs.getDouble("ep_price"));
             ep.setEp_cheap(rs.getInt("ep_cheap"));
@@ -114,8 +114,8 @@ public class EbProductDao extends BaseDao {
      */
     public List<EbProduct> getRecentVisitedProduct(String list) {
         List<EbProduct> productList = new ArrayList<EbProduct>();
-        int count = 2; // 返回前两条浏览记录
-
+        int count = Integer.parseInt(this.getPro("recentViewedProductCount").trim()); // 返回前x条浏览记录
+        // 获取前x条记录
         if(list != null && !"".equals(list)) {
             String[] items = list.split(",");
             if(items.length >= count) {

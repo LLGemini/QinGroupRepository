@@ -30,8 +30,6 @@ public class EbProductCategoryDao extends BaseDao{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
         return list;
     }
 }

@@ -4,7 +4,7 @@
 	<%@ include file="top.jsp" %>
 </head>
 <body>
-<%@ include file="top.jsp" %>
+<%@ include file="middle.jsp" %>
 	<div class="main">
 		<h2>新闻管理</h2>
 		<div class="manage">

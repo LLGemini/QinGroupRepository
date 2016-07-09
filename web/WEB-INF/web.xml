@@ -31,7 +31,6 @@
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
-
     <!--商品详情-->
     <servlet>
         <servlet-name>ProductViewController</servlet-name>
@@ -41,7 +40,6 @@
         <servlet-name>ProductViewController</servlet-name>
         <url-pattern>/product_view</url-pattern>
     </servlet-mapping>
-
     <!--新闻详情-->
     <servlet>
         <servlet-name>NewsViewController</servlet-name>
@@ -51,7 +49,6 @@
         <servlet-name>NewsViewController</servlet-name>
         <url-pattern>/news_view</url-pattern>
     </servlet-mapping>
-
     <!--公告详情-->
     <servlet>
         <servlet-name>NoteViewController</servlet-name>
@@ -78,6 +75,16 @@
     <servlet-mapping>
         <servlet-name>AddShoppingCarController</servlet-name>
         <url-pattern>/add_shoppingcar</url-pattern>
+    </servlet-mapping>
+
+    <!--管理员界面：普通用户管理-->
+    <servlet>
+        <servlet-name>ManageUserController</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.manage.ManageUserController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageUserController</servlet-name>
+        <url-pattern>/manage_general_users</url-pattern>
     </servlet-mapping>
 
 
