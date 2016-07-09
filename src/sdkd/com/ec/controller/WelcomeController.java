@@ -8,10 +8,7 @@ import sdkd.com.ec.model.*;
 
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,11 +37,29 @@ public class WelcomeController extends HttpServlet {
         List<EbProduct> bargin_product_list = productDao.getPromotionProduct();
         request.setAttribute("bargin_product_list",bargin_product_list);
 
+        String cookieList = getCookie(request,response);
+        List<EbProduct> recent_visited_product_list = productDao.getRecentVisitedProduct(cookieList);
+        request.setAttribute("recent_visited_product_list",recent_visited_product_list);
+
         EbProductCategoryDao epcd = new EbProductCategoryDao();
         List<EbProductCategory> epc_list = epcd.getCategories();
         request.setAttribute("category_list",epc_list);
 
         //跳转
         request.getRequestDispatcher("/index.jsp").forward(request,response);
+    }
+
+    private String getCookie(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String list = "";
+        Cookie[] cookies = request.getCookies(); // 从客户端获得cookie集合
+        // 遍历cookies集合
+        if(cookies != null && cookies.length > 0) {
+            for(Cookie cookie : cookies) {
+                if(cookie.getName().equals("productViewCookie")) {
+                    list = cookie.getValue();
+                }
+            }
+        }
+        return list;
     }
 }

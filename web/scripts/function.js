@@ -2,6 +2,7 @@
 window.onload = function() {
 	showChater();
 	scrollChater();
+	generate();
 }
 window.onscroll = scrollChater;
 window.onresize = scrollChater;

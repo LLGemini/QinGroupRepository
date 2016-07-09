@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.jar.Pack200;
 
 /**
  * Created by qin on 2016-07-06.
@@ -62,7 +63,6 @@ public class EbProductDao extends BaseDao {
     }
 
     public  EbProduct getProductDetail(String ep_id) {
-
         String sql = "select * from easybuy_product where ep_id = ?";
         List<String> params = new ArrayList<String>();
         params.add(ep_id);
@@ -102,12 +102,32 @@ public class EbProductDao extends BaseDao {
             ep.setEp_description(rs.getString("ep_description"));
             ep.setEp_price(rs.getDouble("ep_price"));
             ep.setEp_cheap(rs.getInt("ep_cheap"));
-
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return ep;
+    }
+
+    /**
+     * 获得最近浏览的商品列表
+     * @return
+     */
+    public List<EbProduct> getRecentVisitedProduct(String list) {
+        List<EbProduct> productList = new ArrayList<EbProduct>();
+        int count = 2; // 返回前两条浏览记录
+
+        if(list != null && !"".equals(list)) {
+            String[] items = list.split(",");
+            if(items.length >= count) {
+                for(int i = items.length-1; i >= items.length-count; i--) {
+                    productList.add(getProductById(Integer.parseInt(items[i])));
+                }
+            } else {
+                for(int i = items.length-1; i>=0; i--) {
+                    productList.add(getProductById(Integer.parseInt(items[i])));
+                }
+            }
+        }
+        return productList;
     }
 }

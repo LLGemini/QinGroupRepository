@@ -13,10 +13,12 @@
 		<div class="last-view">
 			<h2>最近浏览</h2>
 			<dl class="clearfix">
-				<dt><img src="images/product/0_tiny.gif" /></dt>
-				<dd><a href="product-view.jsp">法国德菲丝松露精品巧克力500g/盒</a></dd>
-				<dt><img src="images/product/0_tiny.gif" /></dt>
-				<dd><a href="product-view.jsp">法国德菲丝松露精品巧克力500g/盒</a></dd>
+				<c:forEach items = "${requestScope.recent_visited_product_list}" var="product">
+				<dl>
+					<dt><img src="${product.ep_file_name}" /></dt>
+					<dd><a href="/product_view?p_id=${product.ep_id}">${product.ep_name}</a></dd>
+				</dl>
+				</c:forEach>
 			</dl>
 		</div>
 	</div>
