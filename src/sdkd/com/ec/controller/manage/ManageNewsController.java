@@ -46,7 +46,19 @@ public class ManageNewsController extends HttpServlet {
         request.getRequestDispatcher("./manage/news.jsp").forward(request,response);
     }
 
+    /**
+     * 新增用户
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     private void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+
+        String userName = request.getParameter("userName").trim();
+
+        String password = request.getParameter("passWord").trim();
 
     }
 

@@ -34,14 +34,34 @@
 					<td class="w1 c"><a href="user-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
 				</tr>
 			</c:forEach>
+			</table>
+			<table class="list">
 				<tfoot>
 				<tr align="center">
-					<td colspan="5">
+					<td class="first w4 c" colspan="5">
 						<jsp:include page="paging_footer.jsp"></jsp:include>
 					</td>
 				</tr>
 				</tfoot>
+					<%--<tr>
+						<td class="first w4 c"><%=++i%></td>
+						<td class="w1 c">${general_user.eu_user_name}</td>
+						<td class="w2 c">${general_user.eu_sex}</td>
+						<td class="w2 c">
+							<c:if test="${general_user.eu_sex == 1}">男</c:if>
+							<c:if test="${general_user.eu_sex == 2}">女</c:if>
+						</td>
+						<td class="w4 c">${general_user.eu_mobile}</td>
+						<td class="w1 c"><a href="user-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+					</tr>--%>
 			</table>
+<%--			<tfoot>
+			<tr align="center">
+				<td colspan="5">
+					<jsp:include page="paging_footer.jsp"></jsp:include>
+				</td>
+			</tr>
+			</tfoot>--%>
 		</div>
 	</div>
 	<div class="clear"></div>

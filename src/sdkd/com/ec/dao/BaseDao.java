@@ -3,6 +3,7 @@ package sdkd.com.ec.dao;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -95,6 +96,7 @@ public class BaseDao {
             PreparedStatement ps = con.prepareStatement(sql);
             if(params!=null && params.size()>0){
                 for(int i=0;i<params.size();i++){
+                    //ps.setInt((i+1),Integer.parseInt(params.get(i)));
                     ps.setString((i+1),params.get(i));
                 }
             }
@@ -105,5 +107,23 @@ public class BaseDao {
         return rs;
     }
 
+    public ResultSet executeSearchUseIntParams(String sql, List<Integer> params){
+        //JDBC的步骤
+        ResultSet rs = null;
+        try {
+            con = this.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            if(params!=null && params.size()>0){
+                for(int i=0;i<params.size();i++){
+                    ps.setInt((i+1),params.get(i));
+                    //ps.setString((i+1),params.get(i));
+                }
+            }
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
 
 }

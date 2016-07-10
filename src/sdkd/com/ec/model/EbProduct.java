@@ -12,14 +12,23 @@ public class EbProduct {
     private int epc_id;
     private int epc_child_id;
     private String ep_file_name;
-    private int ep_cheap;
+    private int ep_dicount;
+    private int ep_view;
 
-    public int getEp_cheap() {
-        return ep_cheap;
+    public int getEp_dicount() {
+        return ep_dicount;
     }
 
-    public void setEp_cheap(int ep_cheap) {
-        this.ep_cheap = ep_cheap;
+    public void setEp_dicount(int ep_dicount) {
+        this.ep_dicount = ep_dicount;
+    }
+
+    public int getEp_view() {
+        return ep_view;
+    }
+
+    public void setEp_view(int ep_view) {
+        this.ep_view = ep_view;
     }
 
     public int getEp_id() {

@@ -29,7 +29,11 @@ public class ProductViewController extends HttpServlet {
 
         EbProductDao ebProductDao = new EbProductDao();
         String ep_id = request.getParameter("p_id");
-        EbProduct product = ebProductDao.getProductDetail(ep_id);
+        int id = 0;
+        if(ep_id != null && !"".equals(ep_id)) {
+            id = Integer.parseInt(ep_id);
+        }
+        EbProduct product = ebProductDao.getProductById(id);
         request.setAttribute("product", product);
 
         addCookie(request,response);

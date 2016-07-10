@@ -27,7 +27,6 @@ public class LoginController extends HttpServlet {
         }
         EbUserDao ebUserDao= new EbUserDao();
         EbUser user = ebUserDao.getUserByName(userName);
-        //EbUser user = ebuserdao.verify(userName,passWord);
         if(user != null && user.getEu_password() != null && user.getEu_password().equals(password))
         {
             HttpSession session = request.getSession();

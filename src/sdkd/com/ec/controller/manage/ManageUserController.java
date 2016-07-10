@@ -23,23 +23,24 @@ public class ManageUserController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf8");
         EbUserDao ebUserDao = new EbUserDao();
-        List<EbUser> generalUsersList = ebUserDao.getGeneralUsersList();
+        //List<EbUser> generalUsersList = ebUserDao.getGeneralUsersList();
         String pageNumberStr = request.getParameter("pageNumber");
         int pageNumber = 1;     //当前页
         if(pageNumberStr != null && !"".equals(pageNumberStr)) {
             pageNumber = Integer.parseInt(pageNumberStr);
         }
 
-        int pageSize = 10;  //每页显示条数
-        int totalUsers = generalUsersList.size(); // 总用户数
+        int pageSize = Integer.parseInt(ebUserDao.getPro("pageSize"));  //每页显示条数
+        int totalUsers = ebUserDao.getGeneralUsersCount(); // 总用户数
         int totalPages = totalUsers/pageSize + ((totalUsers%pageSize) > 0 ? 1 : 0); //总页数
+        int firstItemID = (pageNumber-1)*pageSize;
 
         request.setAttribute("pageNumber",pageNumber);
         request.setAttribute("pageSize",pageSize);
         request.setAttribute("totalUsers",totalUsers);
         request.setAttribute("totalPages",totalPages);
 
-        //List<EbUser> generalUsersList = ebUserDao.getGeneralUsersList();
+        List<EbUser> generalUsersList = ebUserDao.getGeneralUsersList(totalUsers,firstItemID,pageSize);
         request.setAttribute("general_users_list",generalUsersList);
         request.getRequestDispatcher("./manage/user.jsp").forward(request,response);
     }

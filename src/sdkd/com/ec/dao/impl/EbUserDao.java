@@ -42,12 +42,31 @@ public class EbUserDao extends BaseDao{
     }
 
     /**
-     * 获取普通用户列表
+     * 获取普通用户总数
      * @return
      */
-    public List<EbUser> getGeneralUsersList() {
+    public int getGeneralUsersCount () {
+
+        String sql = "select COUNT(eu_status) from easybuy_user GROUP BY eu_status HAVING eu_status=1";
+        ResultSet rs = this.executeSearch(sql, null);
+        int count = 0;
+        try {
+            if(rs.next()) {
+                count = rs.getInt("COUNT(eu_status)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+    /**
+     * 获取普通用户列表，分页获取
+     * 即获取从第pageNumber页第1条开始的pageSize条记录
+     * @return
+     */
+    public List<EbUser> getGeneralUsersList(int totalUsers, int firstItemID, int pageSize) {
         List<EbUser> generalUsersList = new ArrayList<EbUser>();
-        String sql = "select * from easybuy_user where eu_status = 1";
+        String sql = "select a.* from easybuy_user a where "+ totalUsers +" > (select count(0) from easybuy_user b where a.eu_user_id > b.eu_user_id and a.eu_status = b.eu_status) and eu_status = 1 limit "+firstItemID+","+pageSize;
         ResultSet rs = this.executeSearch(sql, null);
         try {
             while (rs.next()) {
