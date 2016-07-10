@@ -12,7 +12,7 @@ import java.util.List;
  * Created by qin on 2016-07-07.
  */
 public class EbProductCategoryDao extends BaseDao{
-    public List<EbProductCategory> getCategories()
+    public List<EbProductCategory> getProductClassesList()
     {
         List<EbProductCategory> list = new ArrayList<EbProductCategory>();
         String sql = "select * from easybuy_product_category";

@@ -10,7 +10,6 @@ import sdkd.com.ec.model.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,7 +41,7 @@ public class WelcomeController extends HttpServlet {
         request.setAttribute("recent_visited_product_list",recent_visited_product_list);
 
         EbProductCategoryDao epcd = new EbProductCategoryDao();
-        List<EbProductCategory> epc_list = epcd.getCategories();
+        List<EbProductCategory> epc_list = epcd.getProductClassesList();
         request.setAttribute("category_list",epc_list);
 
         //跳转

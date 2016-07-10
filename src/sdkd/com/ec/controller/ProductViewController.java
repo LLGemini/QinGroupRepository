@@ -35,7 +35,7 @@ public class ProductViewController extends HttpServlet {
         addCookie(request,response);
 
         EbProductCategoryDao epcd = new EbProductCategoryDao();
-        List<EbProductCategory> epc_list = epcd.getCategories();
+        List<EbProductCategory> epc_list = epcd.getProductClassesList();
         request.setAttribute("category_list",epc_list);
 
         request.getRequestDispatcher("/product-view.jsp").forward(request,response);

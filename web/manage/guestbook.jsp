@@ -5,8 +5,6 @@
 </head>
 <body>
 <<%@ include file="middle.jsp" %>
-
-
 	<div class="main">
 		<h2>留言管理</h2>
 		<div class="manage">

@@ -2,12 +2,8 @@ package sdkd.com.ec.controller;
 
 import sdkd.com.ec.dao.impl.EbNewsDao;
 import sdkd.com.ec.dao.impl.EbNoteDao;
-import sdkd.com.ec.dao.impl.EbProductCategoryDao;
-import sdkd.com.ec.dao.impl.EbProductDao;
 import sdkd.com.ec.model.EbNews;
 import sdkd.com.ec.model.EbNote;
-import sdkd.com.ec.model.EbProduct;
-import sdkd.com.ec.model.EbProductCategory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

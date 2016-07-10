@@ -45,4 +45,10 @@ public class ManageNewsController extends HttpServlet {
         request.setAttribute("news_list", newsList);
         request.getRequestDispatcher("./manage/news.jsp").forward(request,response);
     }
+
+    private void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+
 }

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%@ include file="top.jsp" %>
@@ -14,36 +15,30 @@
 					<th>分类名称</th>
 					<th>操作</th>
 				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td>大类</td>
-					<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="childClass">小类</td>
-					<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="childClass">小类</td>
-					<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td>大类</td>
-					<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="childClass">小类</td>
-					<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="childClass">小类</td>
-					<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
+				<%
+					int parentId = 0;
+				%>
+				<c:forEach items="${requestScope.categories_list}" var="category">
+					<c:if test="${category.epc_parent_id==0}">
+						<tr>
+							<td class="first w4 c"><%=++parentId%></td>
+							<td>${category.epc_name}</td>
+							<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+						</tr>
+					</c:if>
+					<%
+						int childId = 0;
+					%>
+					<c:forEach var ="pca" items ="${requestScope.categories_list}">
+						<c:if test="${pca.epc_parent_id==category.epc_id}">
+							<tr>
+								<td class="first w4 c"><%=++childId%></td>
+								<td class="childClass">${pca.epc_name}</td>
+								<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+							</tr>
+						</c:if>
+					</c:forEach>
+				</c:forEach>
 			</table>
 		</div>
 	</div>

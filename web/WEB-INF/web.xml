@@ -95,6 +95,15 @@
         <servlet-name>ManageProductController</servlet-name>
         <url-pattern>/manage_products</url-pattern>
     </servlet-mapping>
+    <!--管理员界面：商品分类管理-->
+    <servlet>
+        <servlet-name>ManageProductCategoryController</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.manage.ManageProductCategoryController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageProductCategoryController</servlet-name>
+        <url-pattern>/manage_product_categories</url-pattern>
+    </servlet-mapping>
     <!--管理员界面：订单管理-->
     <servlet>
         <servlet-name>ManageOrderController</servlet-name>
