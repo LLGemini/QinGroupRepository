@@ -14,6 +14,10 @@ import java.util.jar.Pack200;
  * Created by qin on 2016-07-06.
  */
 public class EbProductDao extends BaseDao {
+    /**
+     * 热卖商品
+     * @return
+     */
     public List<EbProduct> getHotProduct()
     {
         List<EbProduct> list = new ArrayList<EbProduct>();
@@ -38,6 +42,11 @@ public class EbProductDao extends BaseDao {
         return list;
 
     }
+
+    /**
+     * 促销商品
+     * @return
+     */
     public List<EbProduct> getPromotionProduct()
     {
         List<EbProduct> list = new ArrayList<EbProduct>();
@@ -96,7 +105,7 @@ public class EbProductDao extends BaseDao {
 
     /**
      * 获得最近浏览的商品列表
-     * @return
+     * @return 最近浏览的商品列表
      */
     public List<EbProduct> getRecentVisitedProduct(String list) {
         List<EbProduct> productList = new ArrayList<EbProduct>();
@@ -116,6 +125,11 @@ public class EbProductDao extends BaseDao {
         }
         return productList;
     }
+
+    /**
+     * 获得所有商品列表
+     * @return 所有商品列表
+     */
     public List<EbProduct> getProductsList()
     {
         List<EbProduct> list = new ArrayList<EbProduct>();
@@ -140,4 +154,13 @@ public class EbProductDao extends BaseDao {
         return list;
     }
 
+    /**
+     * 更新商品库存
+     * @param proId 商品编号
+     * @param quantity 数量
+     */
+    public void updateStock(int proId, int quantity){
+        String sql = "update easybuy_product set ep_stock = ep_stock-? where ep_id = ?";
+        List<String> params = new ArrayList<String>();
+    }
 }

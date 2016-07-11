@@ -1,5 +1,7 @@
 package sdkd.com.ec.model;
 
+import java.util.Date;
+
 /**
  * Created by Flower on 2016/7/5.
  */
@@ -8,7 +10,7 @@ public class EbOrder {
     private int eo_user_id;
     private String eo_user_name;
     private String eo_user_address;
-    private String eo_create_time;
+    private Date eo_create_time;
     private double eo_cost;
     private int eo_status;
     private int eo_type;
@@ -25,7 +27,7 @@ public class EbOrder {
         return eo_cost;
     }
 
-    public String getEo_create_time() {
+    public Date getEo_create_time() {
         return eo_create_time;
     }
 
@@ -49,7 +51,7 @@ public class EbOrder {
         this.eo_cost = eo_cost;
     }
 
-    public void setEo_create_time(String eo_create_time) {
+    public void setEo_create_time(Date eo_create_time) {
         this.eo_create_time = eo_create_time;
     }
 

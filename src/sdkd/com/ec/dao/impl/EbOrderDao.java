@@ -13,6 +13,27 @@ import java.util.List;
  * Created by Flower on 2016/7/10.
  */
 public class EbOrderDao extends BaseDao {
+    /**
+     * 保存订单
+     * @param order 要保存的订单
+     */
+    public void saveOrder(EbOrder order) {
+        String sql = "insert into easybuy_order(eo_user_id,eo_user_name,eo_user_address,eo_create_time,eo_cost,eo_status,eo_type) values(?,?,?,?,?,?,?)";
+        List<String> params = new ArrayList<String>();
+        params.add(order.getEo_user_id()+"");
+        params.add(order.getEo_user_name()+"");
+        params.add(order.getEo_user_address()+"");
+        params.add(order.getEo_create_time()+"");
+        params.add(order.getEo_cost()+"");
+        params.add(order.getEo_status()+"");
+        params.add(order.getEo_type()+"");
+        this.exeucteModify(sql,params);
+    }
+
+    /**
+     * 获得订单列表
+     * @return
+     */
     public List<EbOrder> getOrdersList()
     {
         List<EbOrder> list = new ArrayList<EbOrder>();

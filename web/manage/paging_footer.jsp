@@ -21,9 +21,9 @@
 </script>
 <body>
 <form action="manage_general_users" method="get" id="navigatorForm">
-  <a href="manage_general_users?pageNumber=1">首页</a>
+  <a href="manage_general_users?action=index&pageNumber=1">首页</a>
   <c:if test="${pageNumber>1}">
-    <a href="manage_general_users?pageNumber=${pageNumber-1}">上一页</a>
+    <a href="manage_general_users?action=index&pageNumber=${pageNumber-1}">上一页</a>
   </c:if>
   跳转到第 <select name="pageNumber" onchange="gotoSelectedPage();">
   <c:forEach begin="1" end="${totalPages}" step="1" var="pageIndex">
@@ -38,9 +38,9 @@
   </c:forEach>
 </select>页
   <c:if test="${pageNumber<totalPages}">
-    <a href="manage_general_users?pageNumber=${pageNumber+1}">下一页</a>
+    <a href="manage_general_users?action=index&pageNumber=${pageNumber+1}">下一页</a>
   </c:if>
-  <a href="manage_general_users?pageNumber=${totalPages}">末页</a>
+  <a href="manage_general_users?action=index&pageNumber=${totalPages}">末页</a>
 </form>
 </body>
 </html>

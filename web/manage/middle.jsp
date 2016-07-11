@@ -18,7 +18,7 @@
     <div class="navbar">
         <ul class="clearfix">
             <li class="current"><a href="index.jsp">首页</a></li>
-            <li><a href="../manage_general_users">用户</a></li>
+            <li><a href="../manage_general_users?action=index">用户</a></li>
             <li><a href="../manage_products">商品</a></li>
             <li><a href="../manage_orders">订单</a></li>
             <li><a href="guestbook.jsp">留言</a></li>
@@ -45,7 +45,7 @@
         <div class="box">
             <dl>
                 <dt>用户管理</dt>
-                <dd><em><a href="./manage/user-add.jsp">新增</a></em><a href="../manage_general_users">用户管理</a></dd>
+                <dd><em><a href="./manage/user-add.jsp">新增</a></em><a href="../manage_general_users?action=index">用户管理</a></dd>
                 <dt>商品信息</dt>
                 <dd><em><a href="./manage/productClass-add.jsp">新增</a></em><a href="../manage_product_categories">分类管理</a></dd>
                 <dd><em><a href="./manage/product-add.jsp">新增</a></em><a href="../manage_products">商品管理</a></dd>

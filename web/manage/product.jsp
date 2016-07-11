@@ -9,6 +9,14 @@
 	<div class="main">
 		<h2>商品管理</h2>
 		<div class="manage">
+			<div class="search">
+				<form method="get">
+					商品ID：<input type="text" class="text" name="productId" />
+					商品名称：<input type="text" class="text" name="productName" />
+					<label class="ui-blue"><input type="submit" name="submit" value="查询" /></label>
+				</form>
+			</div>
+			<div class="spacer"></div>
 			<table class="list">
 				<tr>
 					<th>ID</th>

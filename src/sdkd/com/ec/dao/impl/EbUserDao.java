@@ -16,27 +16,28 @@ public class EbUserDao extends BaseDao{
 
     public EbUser getUserByName(String user_name) {
         EbUser user = null;
-
-        String sql = "select * from easybuy_user where eu_user_name = ?";
-        List<String> params = new ArrayList<String>();
-        params.add(user_name);
-        ResultSet rs = this.executeSearch(sql,params);
-        try {
-            if (rs.next()) {
-                user = new EbUser();
-                user.setEu_user_id(rs.getInt("eu_user_id"));
-                user.setEu_user_name(rs.getString("eu_user_name"));
-                user.setEu_password(rs.getString("eu_password"));
-                user.setEu_sex(rs.getInt("eu_sex"));
-                user.setEu_birthday(rs.getTimestamp("eu_birthday"));
-                user.setEu_identity_code(rs.getString("eu_identity_code"));
-                user.setEu_email(rs.getString("eu_email"));
-                user.setEu_mobile(rs.getString("eu_mobile"));
-                user.setEu_address(rs.getString("eu_address"));
-                user.setEu_status(rs.getInt("eu_status"));
+        if(user_name != null && !"".equals(user_name)) {
+            String sql = "select * from easybuy_user where eu_user_name = ?";
+            List<String> params = new ArrayList<String>();
+            params.add(user_name);
+            ResultSet rs = this.executeSearch(sql,params);
+            try {
+                if (rs.next()) {
+                    user = new EbUser();
+                    user.setEu_user_id(rs.getInt("eu_user_id"));
+                    user.setEu_user_name(rs.getString("eu_user_name"));
+                    user.setEu_password(rs.getString("eu_password"));
+                    user.setEu_sex(rs.getInt("eu_sex"));
+                    user.setEu_birthday(rs.getTimestamp("eu_birthday"));
+                    user.setEu_identity_code(rs.getString("eu_identity_code"));
+                    user.setEu_email(rs.getString("eu_email"));
+                    user.setEu_mobile(rs.getString("eu_mobile"));
+                    user.setEu_address(rs.getString("eu_address"));
+                    user.setEu_status(rs.getInt("eu_status"));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return user;
     }
